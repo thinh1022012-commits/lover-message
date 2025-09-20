@@ -35,13 +35,20 @@
       text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
       align-items: center;
+    }
+
+    label {
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      user-select: none;
     }
 
     input[type="text"] {
       padding: 10px;
-      width: 280px;
+      width: 300px;
       border: none;
       border-radius: 20px;
       outline: none;
@@ -50,12 +57,12 @@
 
     button {
       margin-top: 10px;
-      padding: 10px 20px;
+      padding: 10px 30px;
       background-color: #ff6b81;
       color: white;
       border: none;
       border-radius: 20px;
-      font-size: 1em;
+      font-size: 1.1em;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -84,19 +91,22 @@
 <body>
   <h1>Không biết tớ còn cơ hội quay lại với cậu nữa không... 💔</h1>
 
-  <h2>Viết câu trả lời cho tớ 💌</h2>
   <form action="https://formspree.io/f/mandrvvk" method="POST">
-    <input type="text" name="message" placeholder="Nhập câu trả lời..." required />
-    <input type="text" name="fix" placeholder="Nếu quay lại, mình cần khắc phục điều gì?" required />
+    <label for="message">Viết câu trả lời cho tớ 💌</label>
+    <input id="message" type="text" name="message" placeholder="Nhập câu trả lời..." required />
+
+    <label for="fix">Nếu quay lại, mình cần khắc phục điều gì?</label>
+    <input id="fix" type="text" name="fix" placeholder="Nhập điều cần khắc phục..." required />
+
     <button type="submit">Gửi cho tớ 💖</button>
   </form>
 
-  <button id="play-music" style="margin-top:20px; padding:10px 20px; font-size:16px; cursor:pointer;">
+  <button id="play-music" style="margin-top: 25px; padding: 12px 30px; font-size: 16px; cursor: pointer;">
     Bật nhạc 💖
   </button>
 
   <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/04/audio_62bc9b7c94.mp3?filename=sweet-love-4804.mp3" type="audio/mpeg" />
+    <source src="https://thinh1022012-commits.github.io/lover-message/beanie.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
