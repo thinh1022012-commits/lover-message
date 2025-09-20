@@ -1,3 +1,7 @@
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/04/audio_62bc9b7c94.mp3?filename=sweet-love-4804.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -35,20 +39,13 @@
       text-align: center;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea {
+    input[type="text"] {
       padding: 10px;
       width: 250px;
       border: none;
       border-radius: 20px;
       outline: none;
       font-size: 1em;
-      resize: none;
-    }
-
-    textarea {
-      height: 100px;
     }
 
     button {
@@ -73,6 +70,8 @@
       font-size: 20px;
       color: red;
       animation: fall 5s linear infinite;
+      user-select: none;
+      pointer-events: none;
     }
 
     @keyframes fall {
@@ -86,18 +85,15 @@
   <h1>Không biết tớ còn cơ hội quay lại với cậu nữa không... 💔</h1>
 
   <h2>Viết câu trả lời cho tớ 💌</h2>
-  
   <form action="https://formspree.io/f/mandrvvk" method="POST">
-    <input type="email" name="email" placeholder="Nhập email của bạn" required />
-    <br><br>
-    <textarea name="message" placeholder="Nhập câu trả lời..." required></textarea>
-    <br>
+    <input type="text" name="message" placeholder="Nhập câu trả lời..." required />
+    <br />
     <button type="submit">Gửi cho tớ 💖</button>
   </form>
 
   <audio autoplay loop>
-    <source src="beanie.mp3" type="audio/mpeg" />
-    Trình duyệt của bạn không hỗ trợ thẻ audio.
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/04/audio_62bc9b7c94.mp3?filename=sweet-love-4804.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
   </audio>
 
   <script>
