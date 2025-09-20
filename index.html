@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Lover Message</title>
   <style>
     body {
@@ -20,39 +20,39 @@
       color: white;
       font-size: 2.5em;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     h2 {
       color: #fff;
-      margin-top: 10px;
+      margin-top: 40px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
 
     form {
-      margin-top: 20px;
+      margin-top: 10px;
       text-align: center;
     }
 
-    .question {
-      color: white;
-      font-weight: bold;
-      margin: 15px 0 5px;
-    }
-
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"],
+    textarea {
       padding: 10px;
-      width: 280px;
+      width: 250px;
       border: none;
       border-radius: 20px;
       outline: none;
       font-size: 1em;
-      margin-bottom: 10px;
+      resize: none;
+    }
+
+    textarea {
+      height: 100px;
     }
 
     button {
-      margin-top: 15px;
+      margin-top: 10px;
       padding: 10px 20px;
       background-color: #ff6b81;
       color: white;
@@ -84,25 +84,20 @@
 </head>
 <body>
   <h1>Không biết tớ còn cơ hội quay lại với cậu nữa không... 💔</h1>
-  <h2>Cậu trả lời thật lòng nha 💌</h2>
 
-  <form action="https://formspree.io/f/xpwjvbkp" method="POST">
-    <p class="question">1. Cậu có còn tình cảm với tớ không?</p>
-    <input type="text" name="cau1" placeholder="Trả lời ở đây..." required>
-
-    <p class="question">2. Cậu có muốn chúng mình nói chuyện lại không?</p>
-    <input type="text" name="cau2" placeholder="Trả lời ở đây..." required>
-
-    <p class="question">3. Nếu được quay lại, cậu mong điều gì sẽ khác?</p>
-    <input type="text" name="cau3" placeholder="Trả lời ở đây..." required>
-
+  <h2>Viết câu trả lời cho tớ 💌</h2>
+  
+  <form action="https://formspree.io/f/mandrvvk" method="POST">
+    <input type="email" name="email" placeholder="Nhập email của bạn" required />
+    <br><br>
+    <textarea name="message" placeholder="Nhập câu trả lời..." required></textarea>
+    <br>
     <button type="submit">Gửi cho tớ 💖</button>
   </form>
 
-  <!-- Nhạc nền tự động phát -->
   <audio autoplay loop>
-    <source src="beanie.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
+    <source src="beanie.mp3" type="audio/mpeg" />
+    Trình duyệt của bạn không hỗ trợ thẻ audio.
   </audio>
 
   <script>
@@ -113,7 +108,10 @@
       heart.style.fontSize = Math.random() * 20 + 10 + "px";
       heart.innerHTML = "❤️";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
     }
 
     setInterval(createHeart, 300);
