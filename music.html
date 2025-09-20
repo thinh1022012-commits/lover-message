@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lời nhắn</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+    .container {
+      z-index: 2;
+      position: relative;
+      max-width: 500px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #ff5e78;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e94e65;
+    }
+    /* Tim rơi */
+    .falling-heart {
+      position: fixed;
+      top: -20px;
+      color: red;
+      font-size: 20px;
+      animation: fall linear forwards;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💖 Không biết tớ còn cơ hội quay lại với cậu không? 💖</h1>
+    <p>Nhạc tự động phát khi mở trang (nếu bị chặn thì bấm 1 lần).</p>
+    <button id="toggleBtn">⏸ Tạm dừng</button>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="beanie.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("toggleBtn");
+    let isPlaying = true;
+
+    // Auto play khi load
+    window.addEventListener("load", () => {
+      let playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          console.log("Autoplay bị chặn, cần click.");
+        });
+      }
+    });
+
+    // Nếu autoplay bị chặn → phát khi click bất kỳ
+    document.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+      }
+    }, { once: true });
+
+    // Nút bật/tắt
+    btn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "▶️ Phát tiếp";
+      } else {
+        music.play();
+        btn.textContent = "⏸ Tạm dừng";
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Tạo tim rơi
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("falling-heart");
+      heart.innerText = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 25) + "px";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
